@@ -1,0 +1,23 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.logo {
+  height: 6rem;
+  padding: 1.5rem;
+  color:antiquewhite
+}
+
+a {
+  color:rgb(255, 255, 255);
+  justify-content: space-evenly;
+}
+
+a:hover {
+  background-color: #00ffbf;
+  color: #ffffff;
+}

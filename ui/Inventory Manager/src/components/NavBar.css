@@ -1,0 +1,36 @@
+.navbar {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  background: black;
+  padding: 1rem;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.logo {
+  font-size: 25pt;
+  font-weight: bold;
+  color: #ffffff;
+  align-content: center;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20pt;
+  margin: 50pt;
+  padding: 50pt;
+}
+
+.nav-links a {
+  font-size: 1rem;
+  color: #ffffff;
+  padding: 13pt;
+  border-radius: 5px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.nav-links a:hover {
+  background-color: #3f3f3f;
+  color: #ffffff;
+}

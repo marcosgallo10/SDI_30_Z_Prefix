@@ -1,11 +1,12 @@
 const express = require('express');
-
+const cors = require('cors')
 const app = express();
 
 const port = 8080;
 const knex = require('knex')(require('./knexfile.js')['development']);
 
 app.use(express.json());
+app.use(cors());
 
 
 app.get('/' , (request, response) => {
@@ -27,6 +28,15 @@ app.get('/items', function (request, response){
   knex('items')
   .select('*')
   .then(data => response.status(200).json(data))
+  .catch(err => response.status(404).json({message:'The data you are looking for could not be found.'}))
+})
+
+app.get('/items/:id', function (request, response){
+  const {id} = request.params;
+  knex('items')
+  .where({id})
+  .first()
+  .then(item => response.status(200).json(item))
   .catch(err => response.status(404).json({message:'The data you are looking for could not be found.'}))
 })
 
@@ -62,14 +72,17 @@ app.post ('/items', (request, response) => {
 
   knex('items')
   .insert(newItem)
-  .then(insertedItem => response.status(200).json(insertedItem))
+  .returning('*')
+  .then(insertedItem => response.status(200).json(insertedItem[0]))
   .catch(err => response.status(500).send(err))
 });
 
 
 app.put ('/items/:id', (request, response) => {
   const {id} = request.params;
+  console.log(request.params)
   const {user_id, item_name, description, quantity} = request.body;
+  console.log(request.body)
 
   const updatedItem = {
     user_id: user_id,
@@ -77,7 +90,6 @@ app.put ('/items/:id', (request, response) => {
     description: description,
     quantity: quantity
   }
-
   knex('items')
   .where ({id})
   .update(updatedItem)
@@ -93,7 +105,7 @@ app.delete('/users/:id', (request, response) => {
     .del()
     .then((deletedItem) => {
       if (deletedItem) {
-        response.status(200).json(`User with ID:${id} has been deleted from your inventory.`)
+        response.status(200).json(`User with ID:${id} has been deleted from your inventory management system.`)
       } else {
         response.status(400).json(`No User with ID:${id} currently exists.`)
       }
@@ -120,8 +132,3 @@ app.delete('/items/:id', (request, response) => {
       response.status(500).json({error: err.message})
     });
 });
-
-
-app.listen(port, () => {
-  console.log('Your Knex and Express Application is running successfully!')
-})
