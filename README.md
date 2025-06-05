@@ -26,17 +26,17 @@ To get started:
 
 API EndPoints
 
-- There are currenly 5 endpoints for the items.
-  - .GET (/items) : This allows the user interface to render all the items onto the HomePage and Inventory Page.
-  - .GET (/items/:id) : This allows the user interface to select a specfic item to redirect them to the ItemDetailsPage of the specfic item.
-  - .POST (/items) : This allows the user to add a new item to the items table.
-  - .PUT (/items/:id) : This allows the user to edit items within the items table.
-  - .DELETE (/items/:id) : This allows the user to delete items within the items table.
+- There are currenly 5 endpoints for the items database.
+  - GET (/items) : This allows the user interface to render all the items onto the HomePage and Inventory Page.
+  - GET (/items/:id) : This allows the user interface to select a specfic item to redirect them to the ItemDetailsPage of the specfic item.
+  - POST (/items) : This allows the user to add a new item to the items table.
+  - PUT (/items/:id) : This allows the user to edit items within the items table.
+  - DELETE (/items/:id) : This allows the user to delete items within the items table.
   
 
-- There are currenlty two endpoints for the users table.
-  - .GET (/users) : This is used in the login page to verify user exists within the users table.
-  - .POST (/users) : This will be used in the future to allow new users to sign up to the application to increase permissions.
+- There are currenlty two endpoints for the users database.
+  - GET (/users) : This is used in the login page to verify user exists within the users table.
+  - POST (/users) : This will be used in the future to allow new users to sign up for the application to allow them to make modification to the inventory.
  
 - Note: Currently there is only one user in the database, for login demo purposes utilize the info below:
-- - {id: 1, first_name: 'Marcos', last_name:'Gallo', user_name: 'marcos_gallo', password:'password' }
+  - {id: 1, first_name: 'Marcos', last_name:'Gallo', user_name: 'marcos_gallo', password:'password' }
